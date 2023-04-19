@@ -16,5 +16,9 @@ jobs:
         run: npm run ci
       - name: Run tests and generate code coverage report
         run: npm run test:cov
-      - name: Upload code coverage report to codecov.io
-        run: npx codecov -t ${{ secrets.CODECOV_TOKEN }}
+      - name: Upload to codecov.io
+      - uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage/coverage-final.json
+          fail_ci_if_error: true
