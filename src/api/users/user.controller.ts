@@ -3,7 +3,6 @@ import {
   Controller,
   Delete,
   Get,
-  NotFoundException,
   Param,
   Post,
   Put,
@@ -13,8 +12,7 @@ import { UserService } from './user.service';
 
 @Controller('users')
 export class UserController {
-  constructor(private users: UserService) {
-  }
+  constructor(private users: UserService) {}
 
   @Post()
   addUser(@Body() request: RqUser) {

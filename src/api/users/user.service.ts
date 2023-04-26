@@ -5,9 +5,10 @@ import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class UserService {
-  constructor(@InjectRepository(User)
-              private repo: Repository<User>) {
-  }
+  constructor(
+    @InjectRepository(User)
+    private repo: Repository<User>,
+  ) {}
 
   create(username: string, password: string) {
     const user = this.repo.create({ username, password });
