@@ -4,6 +4,7 @@ import { UsersModule } from './users/users.module';
 import { User } from './users/user.entity';
 import { ConfigsModule } from './configs/configs.module';
 import { Config } from './configs/config.entity';
+import * as process from "process";
 
 @Module({
   imports: [
@@ -12,10 +13,10 @@ import { Config } from './configs/config.entity';
       database: 'postgres',
       entities: [User, Config],
       synchronize: true,
-      host: 'localhost',
-      port: 5432,
-      username: 'user',
-      password: 'pass',
+      host: process.env.DB_HOST,
+      port: +process.env.DB_PORT,
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
     }),
     UsersModule,
     ConfigsModule,
